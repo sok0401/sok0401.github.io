@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<meta charest="utf-8"/>
+<title>張崴薇的個人網頁</title>
+<style>
+/* ======================================= */
+/* 1. 動態背景色與背景圖片 (Dynamic Background & Image) */
+/* ======================================= */
+/* 定義 body 的基本樣式 */
+body {
+    background-color: #46753d; 
+    animation: gradientBackground 10s infinite alternate;
+    position: relative; 
+    z-index: 0;
+}
+
+/* 定義名為 gradientBackground 的動畫 */
+@keyframes gradientBackground {
+    0% {
+        background-color: #46753d; /* 深綠 */
+    }
+    100% {
+        background-color: #add090; /* 淺綠 */
+    }
+}
+
+/* 偽元素來放置背景圖片層 */
+body::before {
+    content: ""; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* 您的背景圖片路徑 */
+    background-image: url("background.jpg"); 
+    
+    /* 背景圖片樣式設定 */
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center center;
+    
+    /* 設定透明度 */
+    opacity: 0.3; 
+    z-index: -1; 
+}
+
+/* ======================================= */
+/* 2. 圖片畫廊樣式 (Image Gallery Styles) */
+/* ======================================= */
+
+/* 圖片藝廊容器樣式 */
+.image-gallery {
+    display: flex; 
+    justify-content: center; 
+    gap: 20px; 
+    padding: 40px 0; 
+}
+
+/* 每個單一圖片容器的樣式 */
+.image-container {
+    position: relative; 
+    overflow: hidden; 
+    width: 400px; 
+    height: 300px; 
+    cursor: pointer; 
+}
+
+/* 圖片本身的樣式 (用於放大效果) */
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    transition: transform 0.3s ease-in-out; 
+}
+
+/* 圖片名稱覆蓋層的相關樣式已移除 */
+
+/* 滑鼠經過效果 (只放大圖片) */
+.image-container:hover img {
+    transform: scale(1.1); /* 圖片放大 10% */
+}
+
+/* ======================================= */
+/* 3. Lightbox 燈箱相關樣式 */
+/* ======================================= */
+.lightbox {
+  display: none; /* 預設隱藏 */
+  position: fixed; 
+  z-index: 100; 
+  padding-top: 50px; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; 
+  background-color: rgba(0, 0, 0, 0.9); /* 黑色背景透明度 60% */
+}
+
+/* 燈箱中的圖片：完美置中 */        
+.lightbox-content {
+  position: absolute; 
+  top: 50%;           
+  left: 50%;          
+  transform: translate(-50%, -50%); /* 實現垂直和水平完美置中 */
+
+  max-width: 90%;
+  max-height: 90vh; /* 限制圖片高度以適應視窗 */
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+/* 關閉按鈕樣式 */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.close-btn:hover,
+.close-btn:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 動畫效果 (Zoom In) */
+@keyframes zoom {
+  from {transform: scale(0.1)} 
+  to {transform: scale(1)}
+}
+
+</style>
+</head>
+
+<body> 
+<audio controls autoplay="autoplay" loop="loop" volume="0.3">
+   <source src="rolling girl.mp3" type="audio/mpeg" >
+</audio>
+
+
+<h1 style="text-align:center;font-size: 45px;color: #FFFFFF">張崴薇 Wei wei Chang</h1>
+<h2 style="text-align:center;font-size: 30px;color: #FFFFFF">作品展示</h2>
+
+<hr>
+
+<div style="text-align:center;font-size: 23px;color: #FFFFFF">
+    <a href="index.html">個人簡介</a>
+    <a href="work.html">作品展現</a>
+    <a href="habbit.html">特長展示</a>
+     <a href="osusume.html">個人推薦</a>
+    <a href="oshi.html">推し</a>
+</div>
+
+<p style="text-align:center; font-size:30px; color: mintcream;">
+</p>
+
+<div class="image-gallery">
+    
+    <div class="image-container" onclick="openLightbox(this)">
+        <img src="IMG_0979.PNG" data-src="IMG_0979.png" alt="Halloween"> 
+        </div>
+    
+    <div class="image-container" onclick="openLightbox(this)">
+        <img src="羽毛2.jpg" data-src="羽毛2.jpg" alt="hada">
+        </div>
+    
+    <div class="image-container" onclick="openLightbox(this)">
+        <img src="Ado.jpg" data-src="Ado.jpg" alt="ado">
+        </div>
+    
+</div>
+
+<div class="image-gallery">
+    
+    <div class="image-container" onclick="openLightbox(this)">
+        <img src="nqrse1.jpg" data-src="nqrse1.jpg" alt="nqrse">
+        </div>
+
+    <div class="image-container" onclick="openLightbox(this)">
+        <img src="耶2.jpg" data-src="耶2.jpg" alt="委託">
+        </div>
+    
+</div>
+
+
+<br>
+<p2 style="text-align: center;font-size: 22px;color: #FFFFFF;"></p2>
+<p2> 
+</p2> 
+
+<div id="lightbox" class="lightbox">
+    <span class="close-btn" onclick="closeLightbox()">&times;</span>
+    <img class="lightbox-content" id="img-enlarged">
+    </div>
+
+<script>
+    // 獲取燈箱元素
+    const lightbox = document.getElementById("lightbox");
+    // 獲取顯示大圖的 img 元素
+    const imgEnlarged = document.getElementById("img-enlarged");
+    
+    // 點擊圖片容器時打開燈箱的函式
+    function openLightbox(container) {
+        // 獲取容器內的 img 元素
+        const image = container.querySelector('img');
+        
+        // 顯示燈箱
+        lightbox.style.display = "block";
+        // 將大圖的路徑設定給燈箱圖片 (使用 data-src 屬性)
+        imgEnlarged.src = image.getAttribute("data-src");
+        
+        // 移除所有關於圖片名稱/描述的程式碼
+    }
+
+    // 關閉燈箱的函式
+    function closeLightbox() {
+        lightbox.style.display = "none";
+    }
+
+    // 點擊燈箱背景時關閉 
+    lightbox.addEventListener("click", function(event) {
+        // 確保點擊的目標是 lightbox 容器本身
+        if (event.target === lightbox) {
+            closeLightbox();
+        }
+    });
+</script>
+
+</body>
+</html>
+

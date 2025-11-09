@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html>
+
+<style>
+/* 1. 保持 body 的動態背景色 */
+body {
+    /* 保持背景色動畫 */
+    background-color: #46753d; 
+    animation: gradientBackground 10s infinite alternate;
+    
+    /* 讓 body 內容可以參考定位 */
+    position: relative; 
+    z-index: 0;
+}
+
+/* 2. 定義名為 gradientBackground 的動畫 (保持不變) */
+@keyframes gradientBackground {
+    0% {
+        background-color: #46753d; /* 深綠 */
+    }
+    100% {
+        background-color: #add090; /* 淺綠 */
+    }
+}
+
+/* 3. 新增一個 ::before 偽元素來放置背景圖片層 */
+body::before {
+    content: ""; /* 偽元素必須有 content 屬性 */
+    position: fixed; /* 固定在視窗上，不隨內容滾動 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* ****** 請將 '您的圖片名稱.jpg' 替換成您實際的圖片檔案路徑 ****** */
+    background-image: url("background.jpg"); 
+    
+    /* 背景圖片樣式設定 */
+    background-size: cover; /* 讓圖片覆蓋整個區域，不留白 */
+    background-repeat: no-repeat; /* 不重複 */
+    background-position: center center; /* 置中 */
+    
+    /* ** 關鍵：設定透明度，讓 body 的動態背景色透出來 ** */
+    opacity: 0.3; /* 0.1 (極淡) 到 0.9 (極深) 之間，您可以調整此數值 */
+    
+    /* 確保圖片在 body 內容之後，但仍在 body 的動態顏色之上 */
+    z-index: -1; 
+}
+</style>
+<title>張崴薇的個人網頁</title>
+</head>
+
+<audio controls autoplay="autoplay" loop="loop" volume="0.3">
+   <source src="rolling girl.mp3" type="audio/mpeg" >
+</audio>
+
+
+<body style="background-color: #389471;">
+
+<h1 style="text-align:center;font-size: 45px;color: #FFFFFF">張崴薇 Wei wei Chang</h1>
+<h2 style="text-align:center;font-size: 30px;color: #FFFFFF">個人推薦</h2>
+
+<hr>
+
+<div style="text-align:center;font-size: 23px;color: #FFFFFF">
+    <a href="index.html">個人簡介</a>
+    <a href="work.html">作品展現</a>
+    <a href="habbit.html">特長展示</a>
+     <a href="osusume.html">個人推薦</a>
+    <a href="oshi.html">推し</a>
+</div>
+<br>
+<boby>
+
+ <div style="text-align: center;"> 
+
+<p style="text-align:center; font-size:30px; color: mintcream;">
+▼ BOOK ▼
+<div style="text-align: center;"> 
+    
+    <div class="image-gallery">
+        
+        <div class="image-container" onclick="toggleExplanation('explanation1')">
+            <img src="BOOK1.jpg" alt="物語系列"> 
+            <div class="image-overlay">物語系列</div>
+        </div>
+        
+        <div class="image-container" onclick="toggleExplanation('explanation2')">
+            <img src="BOOK3.jpg" alt="薫る花は凛と咲">
+            <div class="image-overlay">薫る花は凛と咲</div>
+        </div>
+        
+        <div class="image-container" onclick="toggleExplanation('explanation3')">
+            <img src="BOOK2.jpg" alt="外之國的少女">
+            <div class="image-overlay">外之國的少女</div>
+        </div>
+        
+    </div>
+    <p2 style="text-align:center;font-size: 18px;color: mintcream;">
+    <div id="explanation1" class="explanation-box">
+        <h3>物語系列</h3>
+        <p>物語系列是日本小說家西尾維新在《講談社BOX》上刊載的小說，由台灣插畫家VOFAN負責其中的插畫。
+            <br>
+        由於物語系列一直都是蠻兩極的作品，非常的看個人喜好，個人推薦可以從化物語系列開始。
+        </p>
+    </div>
+
+    <div id="explanation2" class="explanation-box">
+        <h3>薫る花は凛と咲</h3>
+        <p>是三香見坂所創作的日本漫畫，2021年10月21日起於講談社旗下網路漫畫平台Magazine Pocket上連載。
+            <br>
+        2025年動畫化了，漫畫也非常的好看，雖然沒有太多的主線，但很療育。
+        </p>
+    </div>
+
+    <div id="explanation3" class="explanation-box">
+        <h3>外之國的少女</h3>
+        <p>是由日本漫畫家Nagabe繪畫的黑暗奇幻題材日本漫畫作品，於2015年9月5日開始連載於《月刊Comic Garden》和MAGCOMI。
+            <br>
+        稍微比較冷門，但也是非常推薦，藉由物種之間的關係帶出人性的兩面，還算是療育的短篇。
+        </p2>
+    </div>
+    
+    </div>   
+
+<style>/* 圖片藝廊容器樣式 */
+.image-gallery {
+    display: flex; /* 啟用 Flexbox 讓圖片並排 */
+    justify-content: center; /* 將整個藝廊置中 */
+    gap: 20px; /* 圖片之間的間隔 */
+    padding: 40px 0; /* 上下留白 */
+}
+
+/* 每個單一圖片容器的樣式 */
+.image-container {
+    position: relative; /* 讓圖片名稱可以絕對定位在其上方 */
+    overflow: hidden; /* 確保放大的圖片部分不會超出容器 */
+    width: 400px; /* 設定每個容器的固定寬度 */
+    height: 600px; /* 設定每個容器的固定高度 */
+    cursor: pointer; /* 顯示滑鼠手勢 */
+}
+
+/* 圖片本身的樣式 (用於放大效果) */
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 確保圖片覆蓋整個容器，不變形 */
+    transition: transform 0.3s ease-in-out; /* 設定過渡效果，讓放大更平滑 */
+}
+
+/* 圖片名稱覆蓋層的樣式 */
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* 半透明黑色背景，讓文字更清楚 */
+    color: white;
+    display: flex; /* 啟用 Flexbox 來置中文字 */
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* 預設隱藏覆蓋層 */
+    transition: opacity 0.3s ease-in-out; /* 設定過渡效果，讓顯示更平滑 */
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px #000; /* 文字陰影讓文字更突出 */
+}
+
+/* 滑鼠經過效果 (放大圖片) */
+.image-container:hover img {
+    transform: scale(1.1); /* 圖片放大 10% */
+}
+
+/* 滑鼠經過效果 (顯示圖片名稱覆蓋層) */
+.image-container:hover .image-overlay {
+    opacity: 1; /* 顯示覆蓋層 */
+}</style>
+
+<script>
+function toggleExplanation(targetId) {
+    // 取得頁面上所有的解說區塊 (使用 class name)
+    const allExplanations = document.querySelectorAll('.explanation-box');
+    
+    // 透過 id 抓到目前點擊圖片對應的目標解說區塊
+    const targetExplanation = document.getElementById(targetId);
+
+    // 檢查目標解說區塊的目前狀態
+    const isCurrentlyOpen = targetExplanation.style.display === 'block';
+
+    // 步驟 1: 先將所有的解說區塊都隱藏
+    allExplanations.forEach(box => {
+        box.style.display = 'none';
+    });
+
+    // 步驟 2: 如果目標區塊原本是關閉的 (或所有都被關閉了)
+    // 則現在開啟它；如果原本是開啟的，則保持關閉（因為步驟1已關閉）
+    if (!isCurrentlyOpen) {
+        targetExplanation.style.display = 'block';
+    }
+}
+</script>
+
+</boby>
+
+<a href="https://www.youtube.com/watch?v=FtutLA63Cp8"target="_blank"></a><alt="bad apple" width="1280" height="720">

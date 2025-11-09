@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<meta charest="utf-8"/>
+<style>
+/* 1. 保持 body 的動態背景色 */
+body {
+    /* 保持背景色動畫 */
+    background-color: #46753d; 
+    animation: gradientBackground 10s infinite alternate;
+    
+    /* 讓 body 內容可以參考定位 */
+    position: relative; 
+    z-index: 0;
+}
+
+/* 2. 定義名為 gradientBackground 的動畫 (保持不變) */
+@keyframes gradientBackground {
+    0% {
+        background-color: #46753d; /* 深綠 */
+    }
+    100% {
+        background-color: #add090; /* 淺綠 */
+    }
+}
+
+/* 3. 新增一個 ::before 偽元素來放置背景圖片層 */
+body::before {
+    content: ""; /* 偽元素必須有 content 屬性 */
+    position: fixed; /* 固定在視窗上，不隨內容滾動 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* ****** 請將 '您的圖片名稱.jpg' 替換成您實際的圖片檔案路徑 ****** */
+    background-image: url("background.jpg"); 
+    
+    /* 背景圖片樣式設定 */
+    background-size: cover; /* 讓圖片覆蓋整個區域，不留白 */
+    background-repeat: no-repeat; /* 不重複 */
+    background-position: center center; /* 置中 */
+    
+    /* ** 關鍵：設定透明度，讓 body 的動態背景色透出來 ** */
+    opacity: 0.3; /* 0.1 (極淡) 到 0.9 (極深) 之間，您可以調整此數值 */
+    
+    /* 確保圖片在 body 內容之後，但仍在 body 的動態顏色之上 */
+    z-index: -1; 
+}
+</style>
+<title>張崴薇的個人網頁</title>
+</head>
+
+<audio controls autoplay="autoplay" loop="loop" volume="0.1">
+   <source src="rolling girl.mp3" type="audio/mpeg" >
+</audio>
+
+
+<body style="background-color: #84b37c;">
+
+<h1 style="text-align:center;font-size: 45px;color: #FFFFFF">張崴薇 Wei wei Chang</h1>
+<h2 style="text-align:center;font-size: 30px;color: #FFFFFF">推し</h2>
+
+<hr>
+
+<div style="text-align:center;font-size: 23px;color: #FFFFFF">
+    <a href="index.html">個人簡介</a>
+    <a href="work.html">作品展現</a>
+    <a href="habbit.html">特長展示</a>
+     <a href="osusume.html">個人推薦</a>
+    <a href="oshi.html">推し</a>
+</div>
+
+<br>
+<boby>
+<style>
+/* ======================================= */
+/* 2. 圓形旋轉頭像與並排解說 (Round Spinning Profile) */
+/* ======================================= */
+
+/* 圓形圖片與文字並排的容器 */
+.profile-box {
+    display: flex; 
+    align-items: center; 
+    width: fit-content; 
+    margin: 30px auto; /* 確保整個區塊在頁面水平置中 */
+    padding: 20px;
+    border: 1px solid #add090; 
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.05); /* 輕微透明背景 */
+}
+
+/* 圖片本身的樣式：製作圓形 */
+.round-image {
+    width: 200px; 
+    height: 200px; 
+    border-radius: 50%; /* 關鍵：將圖片變成圓形 */
+    object-fit: cover; 
+    border: 3px solid #d3e16d; 
+    margin-right: 30px; 
+    /* 讓圖片從靜止到旋轉的過渡更自然 */
+    transition: transform 0.5s ease-out; 
+}
+
+/* 定義持續旋轉動畫 */
+@keyframes spin {
+    from {
+        transform: rotate(0deg); 
+    }
+    to {
+        transform: rotate(360deg); 
+    }
+}
+
+/* 滑鼠經過效果：應用持續旋轉動畫 */
+.round-image:hover {
+    animation: spin 30s linear infinite; /* 旋轉 30 秒一圈，無限循環 */
+    transform: rotate(0deg); /* 確保動畫起點正確 */
+}
+
+/* 解說文字區塊的樣式 */
+.profile-text {
+    max-width: 400px; 
+    color: mintcream; 
+    font-size: 18px;
+    line-height: 1.5;
+}
+/* 圖片畫廊相關的 CSS 已經移除，只保留圓形圖片的相關設定 */
+
+</style>
+
+<div class="profile-box">
+    
+    <img src="nqrse.jpg" alt="NQRSE" class="round-image">
+    
+    <div class="profile-text">
+        <h3 style="color: #FFFFFF; margin-top: 0;">nqrse</h3>
+        <p>
+            生日：1995/1/13
+            <br>
+            男性，來自長崎的niconico動畫rapper，參與歌手和VOCALOIDP和協作，各種各樣的企劃參加等。
+            <br>
+            代表作：Happy Halloween Rap ver.、泡沫の夜
+        </p>
+    </div>
+    
+</div>
+
+<div class="profile-box">
+    
+    <img src="wowaka.jpg" alt="wowaka" class="round-image">
+    
+    <div class="profile-text">
+        <h3 style="color: #FFFFFF; margin-top: 0;">wowaka</h3>
+        <p>
+            生日：1987/11/4
+            <br>
+            或稱作現實逃避P，日本音樂創作家，hitorie樂隊首任主唱兼吉他手。
+            2019年4月5日因急性心臟衰竭去世，得年31歲。
+            <br>
+            代表作：アンノウン・マザーグース、ローリンガール
+        </p>
+    </div>
+    
+</div>
+
+<div class="profile-box">
+    
+    <img src="selly.jpg" alt="selly" class="round-image">
+    
+    <div class="profile-text">
+        <h3 style="color: #FFFFFF; margin-top: 0;">selly</h3>
+        <p>
+            生日：1998/2/12
+            <br>
+            原T1 overwatch選手，後來轉T1實況約，本月與T1的合約到期，離開T1加入了CR，現為CR實況主。
+            <br>
+            
+        </p>
+    </div>
+
+</p>
+
+</boby>
+
+<a href="https://www.youtube.com/watch?v=FtutLA63Cp8"target="_blank"></a><alt="bad apple" width="1280" height="720">
